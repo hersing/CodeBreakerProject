@@ -55,16 +55,16 @@ function getResults(result){
 	}
 	
 	var array = input.split('');
-	
+	var answerObj = answer.value.split('').map((val, idx) => { return {val: val, idx: idx}});
 	
 	let correct = 0;
 	let html = '<div class="row"><span class="col-md-6">' + input + '</span><div class="col-md-6">';
 	array.forEach((value, index) => {
-		const idx = answer.value.indexOf(value);
-		if(idx === -1){ 
+		const idx = answerObj.filter(a => a.val === value);
+		if(idx.length === 0){ 
 			html = html + '<span class="glyphicon glyphicon-remove"></span>'
 		}
-		else if(idx === index){ 
+		else if(idx.length > 0 && idx.filter(i => i.idx === index).length > 0 ){ 
 			html = html + '<span class="glyphicon glyphicon-ok"></span>'; 
 			correct = correct+1; 
 		}
