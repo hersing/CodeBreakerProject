@@ -29,7 +29,7 @@ function guess() {
 
 function showReplay(){
 	document.getElementById('replay-div').style.display = 'block';
-	document.getElementById('guessing-div"').style.display = 'none';
+	document.getElementById('guessing-div').style.display = 'none';
 }
 
 function showAnswer(won){ 
