@@ -62,6 +62,9 @@ function generateHtml(result){
 function generateResults(result){
 	let html = '';
 	
+	if(result == null)
+		return html;
+	
 	result.split('').forEach((value, index) => {
 		const idx = answer.value.indexOf(value);
 		if(idx === -1){ 
