@@ -50,9 +50,16 @@ function getResults(result){
 	}
 	var input = result.value;
 	
+	if(input == null){
+		return '';
+	}
+	
+	var array = input.split('');
+	
+	
 	let correct = 0;
 	let html = '<div class="row"><span class="col-md-6">' + input + '</span><div class="col-md-6">';
-	input.split('').forEach((value, index) => {
+	array.forEach((value, index) => {
 		const idx = answer.value.indexOf(value);
 		if(idx === -1){ 
 			html = html + '<span class="glyphicon glyphicon-remove"></span>'
@@ -68,42 +75,10 @@ function getResults(result){
 	html =  html + '</div></div>';
 
 		
-	document.getElementById('results').innerHTML += generateHtml(result.value);
+	document.getElementById('results').innerHTML += html;
 	
 	return correct === 4;
 }
-
-function generateHtml(result){
-	var Guess = '<div class="row"><span class="col-md-6">' + result + '</span><div class="col-md-6">';
-	var resultText = generateResults(result);
-	var Result =  resultText + '</div>';
-	
-	return Guess + Result + '</div>';
-}
-
-function generateResults(result){
-	let html = '';
-	
-	if(result == null)
-		return html;
-	
-	result.split('').forEach((value, index) => {
-		const idx = answer.value.indexOf(value);
-		if(idx === -1){ 
-			html = html + '<span class="glyphicon glyphicon-remove"></span>'
-		}
-		else if(idx === index){ 
-			html = html + '<span class="glyphicon glyphicon-ok"></span>'; 
-			correct = correct+1; 
-		}
-		else{ 
-			html = html + '<span class="glyphicon glyphicon-transfer"></span>' 
-		}
-	});
-	
-	return html;
-}
-
 
 function setHiddenFields(){
 		const random = Math.floor(Math.random()*10000);
