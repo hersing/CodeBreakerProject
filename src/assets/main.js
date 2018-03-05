@@ -1,6 +1,5 @@
 let answer = document.getElementById('answer');
 let attempt = document.getElementById('attempt');
-let correct = 0;
 
 function guess() {
     let input = document.getElementById('user-guess');
@@ -46,7 +45,29 @@ function showAnswer(won){
 }
 
 function getResults(result){
-	correct = 0;
+	if(result == null){
+		return '';
+	}
+	var input = result.value;
+	
+	let correct = 0;
+	let html = '<div class="row"><span class="col-md-6">' + input + '</span><div class="col-md-6">';
+	input.split('').forEach((value, index) => {
+		const idx = answer.value.indexOf(value);
+		if(idx === -1){ 
+			html = html + '<span class="glyphicon glyphicon-remove"></span>'
+		}
+		else if(idx === index){ 
+			html = html + '<span class="glyphicon glyphicon-ok"></span>'; 
+			correct = correct+1; 
+		}
+		else{ 
+			html = html + '<span class="glyphicon glyphicon-transfer"></span>' 
+		}
+	});
+	html =  html + '</div></div>';
+
+		
 	document.getElementById('results').innerHTML += generateHtml(result.value);
 	
 	return correct === 4;
