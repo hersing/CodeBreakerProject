@@ -57,7 +57,7 @@ function generateHtml(result){
 	var resultText = generateResults(result);
 	var Result =  resultText + '</div>';
 	
-	return Guess + Result;
+	return Guess + Result + '</div>';
 }
 
 function generateResults(result){
