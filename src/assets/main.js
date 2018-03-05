@@ -4,7 +4,9 @@ let correct = 0;
 
 function guess() {
     let input = document.getElementById('user-guess');
-    this.setHiddenFields();
+   	if(isEmpty(answer.value) || isEmpty(attempt.value)){
+		setHiddenFields()
+	}
     
     if(!validateInput(input.value)){
     	return false;
@@ -79,13 +81,11 @@ function generateResults(result){
 
 
 function setHiddenFields(){
-	if(isEmpty(answer.value) || isEmpty(attempt.value)){
 		const random = Math.floor(Math.random()*10000);
 		const randomAsString = '0000'+random.toString();
 	
 		answer.value = randomAsString.substr(randomAsString.length-4);
 		attempt.value = 0;
-	}
 }
 
 function isEmpty(value){
