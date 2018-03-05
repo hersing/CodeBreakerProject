@@ -47,7 +47,7 @@ function showAnswer(won){
 
 function getResults(result){
 	correct = 0;
-	document.getElementById('results').insertAdjacentHTML('beforeend', generateHtml(result.value));
+	document.getElementById('results').innerHTML += generateHtml(result.value);
 	
 	return correct === 4;
 }
